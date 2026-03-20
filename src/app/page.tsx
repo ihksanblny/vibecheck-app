@@ -1,27 +1,15 @@
-"use client";
-
-import { useSession } from "next-auth/react";
-import { Loader2 } from "lucide-react";
-import { useVibe } from "@/src/hooks/useVibe";
-import DashboardView from "@/src/components/DashboardView";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/src/lib/auth";
+import DashboardWrapper from "@/src/components/DashboardWrapper";
 import GuestView from "@/src/components/GuestView";
 
-export default function Home() {
-  const { data: session, status } = useSession();
-  const vibeLogic = useVibe();
+export default async function Home() {
+  // Pengecekan session langsung di server agar tidak ada loading kosong di client
+  const session = await getServerSession(authOptions);
 
-  if (status === "loading") {
-    return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <Loader2 className="animate-spin text-white w-8 h-8 opacity-20" />
-      </div>
-    );
+  if (!session) {
+    return <GuestView />;
   }
 
-  // Router Tampilan
-  return session ? (
-    <DashboardView session={session} {...vibeLogic} />
-  ) : (
-    <GuestView />
-  );
+  return <DashboardWrapper session={session} />;
 }

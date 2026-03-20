@@ -18,7 +18,7 @@ export default function Navbar({ isDark, toggleMode, colors }: any) {
                     {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
                 </button>
                 <div className="hidden md:flex items-center gap-6 pr-6 border-r border-slate-500/10">
-                    <Link href="#" className={`${colors.subtext} hover:text-indigo-500 transition-colors`}><Github className="w-5 h-5" /></Link>
+                    <Link href="https://github.com/ihksanblny/vibecheck-app" className={`${colors.subtext} hover:text-indigo-500 transition-colors`}><Github className="w-5 h-5" /></Link>
                 </div>
                 <Link href="/login" className={`text-[9px] font-black uppercase tracking-[0.2em] px-6 py-3 border rounded-full transition-all active:scale-95 shadow-sm ${colors.buttonSecondary} hover:border-indigo-500/30`}>
                     Start Sync
