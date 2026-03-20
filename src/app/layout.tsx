@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "@/src/components/AuthProvider";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,8 +19,8 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className={inter.className}>
-        {/* HARUS ADA PEMBUNGKUS INI */}
         <AuthProvider>
+          <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
           {children}
         </AuthProvider>
       </body>

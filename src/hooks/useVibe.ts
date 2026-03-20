@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { toPng } from "html-to-image";
+import { toast } from "react-hot-toast";
 
 export const PRESETS = [
   { emoji: "⚡", label: "Bersinar", battery: 100, mood: "Full Power!", activity: "Menghajar Deadline" },
@@ -98,11 +99,13 @@ export function useVibe(initialVibe = { battery: 50, mood: "Lagi Gabut", activit
       });
 
       if (res.ok) {
-        alert("MANTAP! Vibe sudah tersimpan.");
+        toast.success("MANTAP! Vibe sudah tersimpan.");
         fetchHistory();
+      } else {
+        toast.error("Gagal simpan vibe.");
       }
     } catch (err) {
-      alert("Aduh, gagal nyambung!");
+      toast.error("Terjadi kesalahan sistem!");
     } finally {
       setLoading(false);
     }

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+import { toast } from "react-hot-toast";
+
 export function useRegister() {
   const [formData, setFormData] = useState({ username: "", password: "", name: "" });
   const [loading, setLoading] = useState(false);
@@ -22,8 +24,8 @@ export function useRegister() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Gagal daftar");
 
-      alert("Registrasi Berhasil! Silakan Login.");
-      router.push("/");
+      toast.success("Registrasi Berhasil! Silakan Login.");
+      router.push("/login");
     } catch (err: any) {
       setError(err.message);
     } finally {
