@@ -27,7 +27,12 @@ export default function DashboardView(props: DashboardViewProps) {
       <Header session={session} copyProfileLink={copyProfileLink} copied={copied} />
 
       <div className="w-full max-w-sm space-y-12 relative z-10 animate-in fade-in slide-in-from-bottom duration-1000 delay-200">
-        <VibeCard ref={cardRef} {...vibe} username={session.user?.username} />
+        <VibeCard
+          ref={cardRef}
+          {...vibe}
+          musicUrl={vibe.music}
+          username={session.user?.username}
+        />
         <Presets applyPreset={applyPreset} />
 
         <div className="bg-[#1e293b]/40 backdrop-blur-xl border border-white/5 p-8 rounded-[3rem] space-y-8 shadow-2xl">

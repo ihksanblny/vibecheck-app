@@ -59,6 +59,7 @@ model VibeStatus {
   batteryLevel   Int      // Persentase baterai sosial (0 - 100)
   moodText       String   // "Lagi pengen nongkrong", "Lagi gabut", dsb
   currentActivity String?  // "Nonton Netflix", "Coding", "Denger lagu galau"
+  musicUrl       String?  // Link Spotify atau Apple Music
   createdAt      DateTime @default(now())
 
   // Relasi ke User

@@ -16,7 +16,8 @@ export async function GET() {
     if (!latestVibe) return NextResponse.json({
         batteryLevel: 50,
         moodText: "Lagi Gabut",
-        currentActivity: "Ngedit Web"
+        currentActivity: "Ngedit Web",
+        musicUrl: ""
     });
 
     return NextResponse.json(latestVibe);
@@ -27,16 +28,21 @@ export async function POST(req: Request) {
     const session = await getServerSession(authOptions);
     if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    const { batteryLevel, moodText, currentActivity } = await req.json();
+    const { batteryLevel, moodText, currentActivity, musicUrl } = await req.json();
 
-    const newVibe = await prisma.vibeStatus.create({
-        data: {
-            batteryLevel: parseInt(batteryLevel),
-            moodText,
-            currentActivity,
-            userId: session.user.id,
-        },
-    });
-
-    return NextResponse.json(newVibe);
+    try {
+        const newVibe = await prisma.vibeStatus.create({
+            data: {
+                batteryLevel: parseInt(batteryLevel) || 50,
+                moodText: moodText || "Lagi Gabut",
+                currentActivity: currentActivity || "Ngedit Web",
+                musicUrl: musicUrl || "",
+                userId: session.user.id,
+            },
+        });
+        return NextResponse.json(newVibe);
+    } catch (error) {
+        console.error("DEBUG VIBE ERROR:", error);
+        return NextResponse.json({ error: "Database save failed" }, { status: 500 });
+    }
 }

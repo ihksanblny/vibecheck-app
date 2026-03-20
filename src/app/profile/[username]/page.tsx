@@ -44,28 +44,30 @@ export default async function ProfilePage({ params }: { params: Promise<{ userna
     const vibe = {
         battery: latestVibe?.batteryLevel ?? 50,
         mood: latestVibe?.moodText ?? "Lagi Malu (Belum Update)",
-        activity: latestVibe?.currentActivity ?? "Hanya Menunggu"
+        activity: latestVibe?.currentActivity ?? "Hanya Menunggu",
+        music: latestVibe?.musicUrl ?? ""
     };
 
     return (
-        <main className="min-h-screen bg-[#0f172a] text-white flex flex-col items-center justify-center p-6 md:p-12">
-            <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
-                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[80%] h-[40%] rounded-full bg-indigo-500 blur-[150px]" />
+        <main className="min-h-screen bg-[#020617] text-white flex flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden">
+            <div className="fixed inset-0 overflow-hidden opacity-10 pointer-events-none">
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[80%] h-[40%] rounded-full bg-indigo-500 blur-[150px] animate-pulse" />
             </div>
 
-            <div className="w-full max-w-sm relative z-10 space-y-10 group">
-                <div className="text-center space-y-2">
-                    <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-2">
+            <div className="w-full max-w-sm relative z-10 space-y-8 animate-in fade-in slide-in-from-bottom duration-1000">
+                <div className="text-center">
+                    <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.3em] text-indigo-400 mb-6">
                         <User className="w-3 h-3" />
                         Live Status
                     </div>
-                    <h2 className="text-2xl font-black italic tracking-tighter">@{user.username}'s Vibe.</h2>
+                    <h2 className="text-3xl font-black italic tracking-tighter mb-2">@{user.username}'s Vibe.</h2>
                 </div>
 
                 <VibeCard
                     battery={vibe.battery}
                     mood={vibe.mood}
                     activity={vibe.activity}
+                    musicUrl={vibe.music}
                     username={user.username || ""}
                 />
 

@@ -9,7 +9,7 @@ export const PRESETS = [
   { emoji: "🎮", label: "Gaming", battery: 60, mood: "Lagi Fokus Main", activity: "Push Rank" },
 ];
 
-export function useVibe(initialVibe = { battery: 50, mood: "Lagi Gabut", activity: "Ngedit Web" }) {
+export function useVibe(initialVibe = { battery: 50, mood: "Lagi Gabut", activity: "Ngedit Web", music: "" }) {
   const [vibe, setVibe] = useState(initialVibe);
   const [loading, setLoading] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -40,7 +40,8 @@ export function useVibe(initialVibe = { battery: 50, mood: "Lagi Gabut", activit
         setVibe({
           battery: data.batteryLevel,
           mood: data.moodText,
-          activity: data.currentActivity || "Ngedit Web"
+          activity: data.currentActivity || "Ngedit Web",
+          music: data.musicUrl || ""
         });
       }
     } catch (err) {
@@ -53,7 +54,8 @@ export function useVibe(initialVibe = { battery: 50, mood: "Lagi Gabut", activit
     setVibe({
       battery: preset.battery,
       mood: preset.mood,
-      activity: preset.activity
+      activity: preset.activity,
+      music: vibe.music // Pertahankan lagu yang sedang ada
     });
   };
 
@@ -94,6 +96,7 @@ export function useVibe(initialVibe = { battery: 50, mood: "Lagi Gabut", activit
           batteryLevel: vibe.battery,
           moodText: vibe.mood,
           currentActivity: vibe.activity,
+          musicUrl: vibe.music
         }),
         headers: { "Content-Type": "application/json" },
       });
