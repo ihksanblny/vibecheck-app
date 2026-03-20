@@ -28,9 +28,9 @@ export default function AuthLayout({ children, isDark, toggleDark, image, title,
             </div>
 
             {/* RIGHT SIDE: FORM CONTENT */}
-            <div className="w-full lg:w-1/2 flex items-center justify-center p-6 md:p-12 relative">
-                <button onClick={toggleDark} className={`absolute top-10 right-10 p-3 rounded-2xl border transition-all active:scale-90 z-20 ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-slate-100 border-slate-200'}`}>
-                    {isDark ? <Sun className="w-5 h-5 text-indigo-400" /> : <Moon className="w-5 h-5 text-indigo-600" />}
+            <div className="w-full lg:w-1/2 flex items-center justify-center p-6 md:p-12 relative pt-20 lg:pt-0">
+                <button onClick={toggleDark} className={`absolute top-14 right-6 md:top-10 md:right-10 p-4 rounded-2xl border transition-all active:scale-95 group/toggle z-20 ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-white border-slate-200 shadow-xl'}`}>
+                    {isDark ? <Sun className="w-5 h-5 text-indigo-400 group-hover/toggle:rotate-45 transition-transform" /> : <Moon className="w-5 h-5 text-indigo-600 group-hover/toggle:-rotate-12 transition-transform" />}
                 </button>
                 <div className="w-full max-w-md relative z-10">
                     <Link href="/" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-indigo-500 transition-colors mb-8 group pl-2">

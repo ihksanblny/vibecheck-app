@@ -18,7 +18,7 @@ export default function DashboardView(props: DashboardViewProps) {
   const { session, vibe, setVibe, cardRef, handleSave, handleDownload, loading, history, copyProfileLink, copied, applyPreset } = props;
 
   return (
-    <main className="min-h-screen bg-[#020617] text-white flex flex-col items-center p-6 md:p-12 pb-24 relative overflow-x-hidden">
+    <main className="min-h-screen bg-[#020617] text-white flex flex-col items-center p-4 sm:p-6 md:p-12 pb-32 relative overflow-x-hidden">
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-1/4 -left-24 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[120px] animate-pulse" />
         <div className="absolute top-1/2 -right-24 w-[400px] h-[400px] bg-violet-500/10 rounded-full blur-[120px]" />

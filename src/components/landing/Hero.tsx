@@ -14,7 +14,7 @@ export default function Hero({ isDark, colors }: any) {
                     <span className="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-500">Live Engine v2.0</span>
                 </div>
 
-                <h1 className="text-5xl md:text-[100px] font-black italic tracking-[-0.05em] leading-[0.85] mb-12 animate-in fade-in slide-in-from-bottom duration-1000 delay-200">
+                <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[100px] font-black italic tracking-[-0.05em] leading-[0.85] mb-12 animate-in fade-in slide-in-from-bottom duration-1000 delay-200">
                     SYNC YOUR <br />
                     <span className={`text-transparent bg-clip-text bg-gradient-to-r ${isDark ? 'from-indigo-400 via-indigo-200 to-indigo-500' : 'from-indigo-600 via-indigo-400 to-indigo-700'}`}>ENERGY.</span>
                 </h1>
