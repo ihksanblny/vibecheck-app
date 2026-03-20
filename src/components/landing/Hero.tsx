@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, User } from "lucide-react";
 
 export default function Hero({ isDark, colors }: any) {
@@ -63,10 +64,12 @@ export default function Hero({ isDark, colors }: any) {
 
                     {/* Main Hero Image */}
                     <div className="absolute inset-0 rounded-[4rem] overflow-hidden border border-white/5 shadow-[0_0_80px_rgba(79,70,229,0.1)] group">
-                        <img
+                        <Image
                             src="https://images.unsplash.com/photo-1539130560464-90209ae89868?q=80&w=1974&auto=format&fit=crop"
-                            className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
                             alt="Stylized Person"
+                            fill
+                            priority
+                            className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-indigo-500/20 to-transparent" />
                     </div>

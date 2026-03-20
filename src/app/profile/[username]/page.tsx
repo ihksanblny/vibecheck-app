@@ -1,11 +1,21 @@
 import { prisma } from "@/src/lib/prisma";
 import VibeCard from "@/src/components/VibeCard";
 import Link from "next/link";
-import { User, ArrowRight } from "lucide-react";
+import { ArrowLeft, User, ArrowRight } from "lucide-react";
+import { Metadata } from "next";
 
-export default async function ProfilePage({ params }: { params: { username: string } | Promise<{ username: string }> }) {
-    // Dalam Next.js terbaru, params harus di-await jika bertipe Promise
-    const resolvedParams = await (params as any);
+// DINAMIC METADATA UNTUK SEO & SOCIAL SHARING
+export async function generateMetadata({ params }: { params: Promise<{ username: string }> }): Promise<Metadata> {
+    const resolvedParams = await params;
+    const username = resolvedParams.username;
+    return {
+        title: `${username}'s Vibe | VibeCheck`,
+        description: `Check out ${username}'s current social battery and mood on VibeCheck.`,
+    };
+}
+
+export default async function ProfilePage({ params }: { params: Promise<{ username: string }> }) {
+    const resolvedParams = await params;
     const { username } = resolvedParams;
 
     const user = await prisma.user.findFirst({
