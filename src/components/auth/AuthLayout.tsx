@@ -1,7 +1,6 @@
-"use client";
-
-import { Sun, Moon, ArrowLeft } from "lucide-react";
+import React from "react";
 import Link from "next/link";
+import { ArrowLeft, Sun, Moon } from "lucide-react";
 
 interface AuthLayoutProps {
     children: React.ReactNode;
@@ -10,13 +9,19 @@ interface AuthLayoutProps {
     image: string;
     title: string;
     subtitle: string;
-    colors: any;
+    colors: {
+        bg: string;
+        card: string;
+        input: string;
+        text: string;
+        subtext: string;
+    };
 }
 
 export default function AuthLayout({ children, isDark, toggleDark, image, title, subtitle, colors }: AuthLayoutProps) {
     return (
-        <main className={`min-h-screen ${colors.bg} ${colors.text} flex transition-colors duration-500 relative overflow-hidden`}>
-            {/* LEFT SIDE: HD IMAGE */}
+        <main className={`min-h-screen ${colors.bg} ${colors.text} flex transition-colors duration-500 relative overflow-x-hidden`}>
+            {/* LEFT SIDE: HD IMAGE - Hidden on Mobile */}
             <div className="hidden lg:block w-1/2 relative overflow-hidden group">
                 <img src={image} className="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000" alt="Cover" />
                 <div className={`absolute inset-0 bg-gradient-to-r ${isDark ? 'from-transparent to-[#020617]' : 'from-transparent to-[#f8fafc]'}`} />
@@ -28,16 +33,25 @@ export default function AuthLayout({ children, isDark, toggleDark, image, title,
             </div>
 
             {/* RIGHT SIDE: FORM CONTENT */}
-            <div className="w-full lg:w-1/2 flex items-center justify-center p-6 md:p-12 relative pt-20 lg:pt-0">
-                <button onClick={toggleDark} className={`absolute top-14 right-6 md:top-10 md:right-10 p-4 rounded-2xl border transition-all active:scale-95 group/toggle z-20 ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-white border-slate-200 shadow-xl'}`}>
+            <div className="w-full lg:w-1/2 flex items-center justify-center relative p-6 md:p-12">
+                {/* Theme Toggle - Positioned safely for notch */}
+                <button
+                    onClick={toggleDark}
+                    className={`absolute top-14 right-6 md:top-10 md:right-10 p-4 rounded-2xl border transition-all active:scale-95 group/toggle z-30 ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-white border-slate-200 shadow-xl'}`}
+                >
                     {isDark ? <Sun className="w-5 h-5 text-indigo-400 group-hover/toggle:rotate-45 transition-transform" /> : <Moon className="w-5 h-5 text-indigo-600 group-hover/toggle:-rotate-12 transition-transform" />}
                 </button>
-                <div className="w-full max-w-md relative z-10">
-                    <Link href="/" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-indigo-500 transition-colors mb-8 group pl-2">
-                        <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
-                        Return Portal
-                    </Link>
-                    <div className={`backdrop-blur-3xl rounded-[3rem] p-10 md:p-14 border ${colors.card}`}>
+
+                <div className="w-full max-w-md relative z-10 pt-20 md:pt-0">
+                    {/* Return Portal - Aggressive safe-area spacing */}
+                    <div className="mb-10 pl-2">
+                        <Link href="/" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-indigo-500 transition-colors group">
+                            <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
+                            Return Portal
+                        </Link>
+                    </div>
+
+                    <div className={`backdrop-blur-3xl rounded-[3rem] p-8 md:p-14 border ${colors.card} shadow-2xl`}>
                         {children}
                     </div>
                 </div>
