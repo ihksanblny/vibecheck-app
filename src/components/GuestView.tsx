@@ -5,6 +5,7 @@ import Navbar from "./landing/Navbar";
 import Hero from "./landing/Hero";
 import Features from "./landing/Features";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function GuestView() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -31,6 +32,23 @@ export default function GuestView() {
 
       <div className="flex flex-col items-center">
         <Hero isDark={isDarkMode} colors={colors} />
+
+        {/* Explore Community CTA */}
+        <section className="py-20 px-6 w-full flex justify-center">
+          <Link
+            href="/discovery"
+            className="group flex flex-col items-center gap-6 p-12 rounded-[3.5rem] bg-indigo-500/5 border border-indigo-500/10 hover:border-indigo-500/30 transition-all duration-500 max-w-2xl w-full text-center hover:bg-indigo-500/10"
+          >
+            <div className="w-16 h-16 rounded-full bg-indigo-500 flex items-center justify-center shadow-2xl shadow-indigo-500/40 group-hover:scale-110 transition-transform duration-500">
+              <ArrowRight className="w-8 h-8 text-white -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-3xl font-black italic tracking-tighter">Explore Community.</h3>
+              <p className="text-slate-500 text-sm font-medium uppercase tracking-[0.2em]">Check out the global vibe wall</p>
+            </div>
+          </Link>
+        </section>
+
         <Features colors={colors} />
 
         {/* Simple Footer under 100 lines limit */}

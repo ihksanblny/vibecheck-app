@@ -1,6 +1,6 @@
 "use client";
 
-import { LogOut, ArrowRight, Share2, Check } from "lucide-react";
+import { LogOut, ArrowRight, Share2, Check, Globe } from "lucide-react";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 
@@ -19,6 +19,10 @@ export default function Header({ session, copyProfileLink, copied }: any) {
             </div>
 
             <div className="flex items-center gap-3">
+                <Link href="/discovery" className="flex items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 text-slate-400 hover:bg-white/10 hover:text-indigo-400 transition-all active:scale-90 group relative">
+                    <Globe className="w-4 h-4" />
+                    <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-indigo-500 text-white text-[8px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity font-black uppercase tracking-tighter pointer-events-none whitespace-nowrap shadow-xl">Explore</span>
+                </Link>
                 <button onClick={() => copyProfileLink(session.user?.username)} className={`flex items-center justify-center p-3 rounded-2xl border transition-all active:scale-90 ${copied ? 'bg-green-500/20 border-green-500/40 text-green-400' : 'bg-white/5 border-white/10 text-slate-400 hover:bg-white/10'}`}>
                     {copied ? <Check className="w-4 h-4" /> : <Share2 className="w-4 h-4" />}
                 </button>
