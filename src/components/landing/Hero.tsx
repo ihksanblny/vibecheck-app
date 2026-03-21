@@ -46,10 +46,10 @@ export default function Hero({ isDark, colors }: any) {
             </div>
 
             {/* RIGHT SIDE: HUMAN ELEMENT HD */}
-            <div className="hidden lg:flex flex-1 relative animate-in fade-in slide-in-from-right duration-1000 delay-200">
-                <div className="relative w-full aspect-square max-w-lg mx-auto">
-                    {/* Floating Decorative Card */}
-                    <div className="absolute -top-10 -left-10 w-48 h-64 bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[2.5rem] z-20 shadow-2xl p-6 hidden xl:block animate-bounce-slow">
+            <div className="hidden lg:flex flex-1 relative animate-in fade-in slide-in-from-right duration-1000 delay-200 justify-center">
+                <div className="relative w-full max-w-sm aspect-[4/5]">
+                    {/* Floating Decorative Card - Top Right */}
+                    <div className="absolute top-10 -right-20 w-44 h-56 bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[2.5rem] z-20 shadow-2xl p-6 hidden xl:block animate-bounce-slow">
                         <div className="flex justify-between items-start mb-10">
                             <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center">
                                 <User className="w-5 h-5 text-orange-500" />
@@ -63,20 +63,20 @@ export default function Hero({ isDark, colors }: any) {
                     </div>
 
                     {/* Main Hero Image */}
-                    <div className="absolute inset-0 rounded-[4rem] overflow-hidden border border-white/5 shadow-[0_0_80px_rgba(79,70,229,0.1)] group">
+                    <div className="absolute inset-0 rounded-[4rem] overflow-hidden border border-white/5 shadow-[0_0_80px_rgba(79,70,229,0.15)] group">
                         <Image
-                            src="https://images.unsplash.com/photo-1539130560464-90209ae89868?q=80&w=1974&auto=format&fit=crop"
+                            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1920&auto=format&fit=crop"
                             alt="Stylized Person"
                             fill
                             priority
                             className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-indigo-500/20 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60" />
                     </div>
 
-                    {/* Aesthetic Circles */}
-                    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-600/20 rounded-full blur-[80px]" />
-                    <div className="absolute top-1/2 -left-20 w-32 h-32 bg-violet-600/20 rounded-full blur-[60px]" />
+                    {/* Aesthetic Glows */}
+                    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-600/30 rounded-full blur-[80px]" />
+                    <div className="absolute -top-10 -left-10 w-32 h-32 bg-violet-600/20 rounded-full blur-[60px]" />
                 </div>
             </div>
         </section>
